@@ -9,6 +9,14 @@ import Column from "./Column";
 import friends from "./friends.json";
 import './App.css';
 
+function shuffleFriends(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
 class App extends Component {
   // Setting this.state.friends to the friends json array
   state = {
@@ -19,16 +27,16 @@ class App extends Component {
   };
   
   handleShuffle = () => {
-    for (let i = friends.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [friends[i], friends[j]] = [friends[j], friends[i]];
-  }
-  console.log(friends);
+    		// let friends = this.state.friends;
+        let shuffledFriends = shuffleFriends(friends);
+        this.setState({ friends: shuffledFriends });
+  console.log(this.state.friends);
   };
 
   handleIncrement = () => {
     this.setState({
       count: this.state.count + 1,
+      topscore: this.state.topscore + 1,
       rightwrong: "Correct!"
     });
     this.handleShuffle();
@@ -56,7 +64,7 @@ class App extends Component {
           rightwrong={this.state.rightwrong}
          />
 
-        <Title>Go Team Venture!</Title>
+        <Title>Be wary, do not click on a duplicate. Go Team Venture!</Title>
 
         <Container>
           <Row>
@@ -84,11 +92,3 @@ class App extends Component {
 
 export default App;
 
-/* <Container>
-  <Row>
-    <Column size="md-4 sm-4">title={Nav.title}</Column>)}
-    <Column size="md-4 sm-4">
-      <h1>You lose!</h1>
-    </Column>)}
-    <Column size="md-4 sm-4" score={nav.score}>
-      <h1>Score: {this.state.count}</h1>
