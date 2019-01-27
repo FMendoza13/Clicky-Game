@@ -12,9 +12,13 @@ import './App.css';
 class App extends Component {
   // Setting this.state.friends to the friends json array
   state = {
-    friends
+    friends,
+    count: 0
   };
-
+  
+  handleIncrement = () => {
+    this.setState({count: this.state.count +1});
+  }
   removeFriend = id => {
     // Filter this.state.friends for friends with an id not equal to the id being removed
     const friends = this.state.friends.filter(friend => friend.id !== id);
@@ -27,31 +31,27 @@ class App extends Component {
     return (
 
       <Wrapper>
-
-        <Nav>
-          <Container>
-            <Row>
-              <Column size="md-4 sm-4">
-                <h1>Clicky Game</h1>
-              </Column>)}
-              <Column size="md-4 sm-4">
-                <h1>You lose!</h1>
-              </Column>)}
-              <Column size="md-4 sm-4">
-                <h1>Score</h1>
-              </Column>)}
-            </Row>
-          </Container>
+        <Nav
+          title='Clicky Game'
+          score={this.state.count}
+          >        
         </Nav>
 
         <Title>Click on dem cards!</Title>
 
         <Container>
           <Row>
-            {this.state.friends.map(friend => 
+            {this.state.friends.map(friend => ( 
               <Column size="md-3 sm-4">
-                <FriendCard removeFriend={this.removeFriend} id={friend.id} key={friend.id} image={friend.image} />
-              </Column>)}
+                <FriendCard
+                  key={friend.id}
+                  handleIncrement={this.handleIncrement}
+                  removeFriend={this.removeFriend}
+                  id={friend.id}
+                  image={friend.image}
+                />
+              </Column>
+            ))}  
           </Row>
         </Container>
 
