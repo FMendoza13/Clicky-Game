@@ -1,7 +1,8 @@
 [
     {
       "id": 1,
-      "image": "https://vignette.wikia.nocookie.net/venturebrothers/images/8/8b/Hank_Venture_s7_portal.jpg/revision/latest?cb=20190106220301"
+      "image": "https://vignette.wikia.nocookie.net/venturebrothers/images/8/8b/Hank_Venture_s7_portal.jpg/revision/latest?cb=20190106220301",
+      "cicked": false
     },
     {
       "id": 2,

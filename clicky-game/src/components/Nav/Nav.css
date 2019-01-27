@@ -11,9 +11,11 @@ nav {
 
 a {
   margin-right: 10px;
+  color:whitesmoke;
+
 }
 
 a:hover {
-  color: rgb(255, 72, 0);
+  color:teal;
   text-decoration: none;
 }
