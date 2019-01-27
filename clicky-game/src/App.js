@@ -14,24 +14,34 @@ class App extends Component {
   state = {
     friends,
     count: 0,
-    topscore: 0
+    topscore: 0,
+    rightwrong: ""
   };
   
-  handleIncrement = () => {
-    this.setState({count: this.state.count +1});
-    this.setState({ topscore: this.state.count + 1});
+  handleShuffle = () => {
+    for (let i = friends.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [friends[i], friends[j]] = [friends[j], friends[i]];
+  }
+  console.log(friends);
   };
 
-  handleCardClick = () => {
-    const shuffleArray = friend => friends.sort(() => Math.random() - 0.5);
-    this.setState({ friends })
+  handleIncrement = () => {
+    this.setState({
+      count: this.state.count + 1,
+      rightwrong: "Correct!"
+    });
+    this.handleShuffle();
 
-  }
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
+  };
+  handleReset = () => {
+    // this.setState({topscore: this.state.count});
+    this.setState({ 
+      count: 0,
+      topscore: this.state.topscore,
+      rightwrong: "Bork!"
+    });
+    this.handleShuffle();
   };
 
   // Map over this.state.friends and render a FriendCard component for each friend object
@@ -40,13 +50,13 @@ class App extends Component {
 
       <Wrapper>
         <Nav
-          title='Clicky Game'
+          title= "The Venture Brother's Clicky Game"
           score={this.state.count}
           topscore={this.state.topscore}
-          >        
-        </Nav>
+          rightwrong={this.state.rightwrong}
+         />
 
-        <Title>Click on dem cards!</Title>
+        <Title>Go Team Venture!</Title>
 
         <Container>
           <Row>
@@ -55,10 +65,11 @@ class App extends Component {
                 <FriendCard
                   key={friend.id}
                   handleIncrement={this.handleIncrement}
-                  shuffleArray={this.shuffleArray}
-                  removeFriend={this.removeFriend}
+                  handleShuffle={this.handleShuffle}
+                  handleReset={this.handleReset}
                   id={friend.id}
                   image={friend.image}
+                  //clicked={friend.clicked}
                 />
               </Column>
             ))}  
@@ -72,3 +83,12 @@ class App extends Component {
 }
 
 export default App;
+
+/* <Container>
+  <Row>
+    <Column size="md-4 sm-4">title={Nav.title}</Column>)}
+    <Column size="md-4 sm-4">
+      <h1>You lose!</h1>
+    </Column>)}
+    <Column size="md-4 sm-4" score={nav.score}>
+      <h1>Score: {this.state.count}</h1>
