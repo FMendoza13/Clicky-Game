@@ -5,7 +5,7 @@ const Nav = props => (
   <nav>
     <ul>
       <li className="brand animated lightSpeedIn">
-        <a href="/">{props.title}</a>
+        <a href="/clicky-game">{props.title}</a>
       </li>
 
       <li id="rw">{props.rightwrong}</li>
