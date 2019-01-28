@@ -40,7 +40,7 @@ class App extends Component {
     const newScore = this.state.currentScore + 1;
     this.setState({
       currentScore: newScore,
-      rightwrong: "Correct!"
+      rightwrong: "Go Team Venture!"
     });
     if (newScore >= this.state.topScore) {
       this.setState({ topScore: newScore });

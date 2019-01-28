@@ -4,7 +4,7 @@ import "./Nav.css";
 const Nav = props => (
   <nav>
     <ul>
-      <li className="brand">
+      <li className="brand animated lightSpeedIn">
         <a href="/">{props.title}</a>
       </li>
 
