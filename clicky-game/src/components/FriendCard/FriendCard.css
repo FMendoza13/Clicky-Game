@@ -1,5 +1,4 @@
 .card {
-  /* background: #444; */
   border: 4px teal solid;
   border-radius: 2px;
   width: 150px;
@@ -19,22 +18,14 @@
 
 .card > .img-container > img {
   height: 100%;
-  /* background-size: cover; */
 }
 
 .card:hover {
-  /* opacity: 0.8; */
-  /* width: 210px;
-  height: 210px; */
 
-  /* transform: scale(1.10); */
   box-shadow: 8px 8px 20px #999;
   transform: scale(1.1);
 }
 
 .card:active {
-  /* background-color: #3e8e41; */
-  /* box-shadow: 0 5px #666; */
   transform: translate(1px, 1px);
-
 }
